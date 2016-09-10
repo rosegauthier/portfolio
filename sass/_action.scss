@@ -1,0 +1,25 @@
+.action {
+	width: 65%;
+	margin: 160px auto 115px auto;
+	padding: 60px 0;
+	border: 1px solid #ababab;
+	text-align: center;
+	@media all and (max-width: 800px) {
+		width: 90%;
+	}
+	h3 {
+		font-size: 24px;
+	}
+	p {
+		padding: 20px 0 40px 0;
+		color: #ababab;
+	}
+	a {
+		font-family: $heading-font;
+		font-size: 14px;
+		text-transform: uppercase;
+		&:hover {
+			color: $accent-2;
+		}
+	}
+}

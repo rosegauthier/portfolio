@@ -1,14 +1,120 @@
-ul.menu {
-	margin: 0;
-	padding: 0;
-	li {
-		display: inline;
-		margin-right: 10px;
-		a {
-			color: #333;
-			padding: 10px;
-			background: #333;
-			color: white;
+.nav-bar {
+	padding: 0 40px;
+	a {
+		display: inline-block;
+		color: $black;
+		.logo {
+			width: 50px;
+			height: 50px;
+			margin-top: 25px;
 		}
+	}
+}
+
+header .menu {
+	position: relative;
+	float: right;
+	font-family: $heading-font;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	text-align: right;
+	li {
+		display: inline-block;
+		a {
+			position: relative;
+			margin: 25px 0;
+			padding: 15px 25px;
+			font-size: 14px;
+			&:hover::after {
+				@include keyline(calc(50% - 20px), 40px, $black);
+			}
+		}
+	}
+	@media all and (max-width: 800px) {
+		display: none;
+		height: 100vh;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding-top: 15%;
+		z-index: 10;
+		background-color: rgba(0, 0, 0, 0.9);
+		li {
+			display: block;
+			height: 15%;
+			text-align: center;
+			a {
+				padding: 20px 30px;
+				color: $accent-2;
+				font-size: 24px;
+				text-shadow: 1px 1px $black;
+				&:hover::after {
+					border-bottom: none;
+				}
+			}
+		}
+	}
+}
+
+.hamburger {
+	display: none;
+	position: relative;
+	float: right;
+	width: 40px;
+	height: 35px;
+	margin-top: 40px;
+	transform: rotate(0deg);
+	transition: 0.5s ease-in-out;
+	cursor: pointer;
+	z-index: 20;
+	span {
+		display: block;
+		position: absolute;
+		height: 5px;
+		width: 100%;
+		background: $black;
+		border-radius: 3px;
+		opacity: 1;
+		left: 0;
+		transform: rotate(0deg);
+		transition: 0.25s ease-in-out;
+		&:nth-child(1) {
+			top: 0px;
+		}
+		&:nth-child(2), &:nth-child(3) {
+			top: 14px;
+		}
+		&:nth-child(4) {
+			top: 28px;
+		}
+	}
+	@media all and (max-width: 800px) {
+		display: block;
+	}
+}
+
+.hamburger.open {
+	span {
+		background-color: $accent-2;
+	}
+	span:nth-child(1) {
+		top: 18px;
+		width: 0%;
+		left: 50%;
+	}
+	span:nth-child(2) {
+		transform: rotate(45deg);
+	}
+	span:nth-child(3) {
+		transform: rotate(-45deg);
+	}
+	span:nth-child(4) {
+		top: 18px;
+		width: 0%;
+		left: 50%;
 	}
 }

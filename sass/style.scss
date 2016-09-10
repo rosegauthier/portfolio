@@ -8,39 +8,25 @@
 */
 
 @import 'normalize';
+@import 'helpers';
+@import 'global';
 @import 'typography';
+@import 'header';
 @import 'navigation';
+@import 'social';
+@import 'about';
+@import 'skills';
+@import 'fp-portfolio';
+@import 'action';
+@import 'blog';
 @import 'sidebar';
 @import 'comments';
+@import 'portfolio';
+@import 'divider';
 @import 'footer';
-/*
-====================================
-Default Styling
-====================================
-*/
 
-img {
-	max-width: 100%;
-}
 
-body {
-	color: #333;
-}
 
-.container {
-	max-width: 1200px;
-	margin: 0 auto;
-}
-
-.content {
-	float: left;
-	width: 65%;
-	margin-right: 5%;
-}
-
-.full {
-	width: 100%;
-}
 
 
 

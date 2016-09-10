@@ -1,13 +1,19 @@
+#comments {
+	padding-top: 40px;
+}
+
 #comments .navigation {
 	padding: 0 0 18px;
 }
 
 h3 {
 	&#comments-title, &#reply-title {
-		color: #000000;
+		color: $black;
 		font-weight: 700;
 		font-size: 20px;
 		margin-bottom: 0;
+		text-transform: uppercase;
+		font-family: $heading-font;
 	}
 	&#comments-title {
 		padding: 24px 0;
@@ -16,7 +22,7 @@ h3 {
 
 .commentlist li {
 	&.comment {
-		border-bottom: 1px solid #e7e7e7;
+		border-bottom: 1px solid #ababab;
 		line-height: 24px;
 		position: relative;
 		clear: both;
@@ -30,6 +36,7 @@ h3 {
 }
 
 #comments .comment-body {
+	position: relative;
 	ul, ol {
 		margin-bottom: 18px;
 	}
@@ -38,6 +45,21 @@ h3 {
 	}
 	blockquote p:last-child {
 		margin-bottom: 24px;
+	}
+	&::after {
+		@include keyline(0, 80px, #E5E5E5);
+	}
+}
+
+#comments .comment:last-of-type .comment-body::after {
+	@include keyline(0, 0, transparent);
+}
+
+.comments-title {
+	padding-top: 50px;
+	text-align: left;
+	&::after {
+		@include keyline(0, 70px, $black);
 	}
 }
 
@@ -52,18 +74,26 @@ h3 {
 	}
 }
 
+ul.comment-list {
+	padding-bottom: 40px;
+	border-bottom: 1px solid $accent-1;
+}
+
 .comment-author {
+	display: inline-block;
+	font-size: 18px;
 	cite {
-		color: #000000;
+		color: $black;
 		font-style: normal;
 		font-weight: 700;
 	}
 	.says {
-		font-style: italic;
+		display: none;
 	}
 }
 
 .comment-meta {
+	padding-top: 25px;
 	font-size: 12px;
 	margin: 0 0 5px;
 	a {
@@ -74,11 +104,23 @@ h3 {
 	}
 }
 
+.comment-metadata {
+	display: inline-block;
+}
+
+.comment-content {
+	padding: 15px 25px 30px 25px;
+	color: #ababab;
+	letter-spacing: 0.5px;
+	font-weight: 300;
+}
+
 .reply {
+	display: none;
 	font-size: 12px;
 	padding: 0 0 24px;
 	a {
-		color: #888888;
+		color: #ababab;
 	}
 }
 
@@ -94,7 +136,7 @@ a.comment-edit-link {
 #comments .pingback {
 	margin-bottom: 18px;
 	padding-bottom: 18px;
-	border-bottom: 1px solid #e7e7e7;
+	border-bottom: 1px solid #ababab;
 }
 
 .commentlist li.comment + li.pingback {
@@ -103,7 +145,7 @@ a.comment-edit-link {
 
 #comments .pingback {
 	p {
-		color: #888888;
+		color: #ababab;
 		font-size: 12px;
 		line-height: 18px;
 		display: block;
@@ -116,12 +158,11 @@ a.comment-edit-link {
 }
 
 input[type=submit] {
-	color: #333333;
+	color: #ababab;
 }
 
 #respond {
 	margin-top: 24px;
-	border-top: 1px solid #e7e7e7;
 	overflow: hidden;
 	position: relative;
 	.comment-notes {
@@ -138,7 +179,10 @@ input[type=submit] {
 }
 
 h3#reply-title {
-	margin: 18px 0;
+	padding: 60px 0 25px 0;
+	font-family: $heading-font;
+	font-size: 20px;
+	letter-spacing: 2px;
 }
 
 #comments-list #respond {
@@ -151,21 +195,54 @@ h3#reply-title {
 	font-weight: 400;
 }
 
+#commentform::after {
+	content: " ";
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
+
 #respond {
 	.required {
-		color: #ff4b33;
+		color: $accent-2;
 		font-weight: 700;
 	}
 	label {
+		display: inline-block;
+		width: 100%;
+		opacity: 0;
 		color: #888888;
 		font-size: 12px;
 	}
-	input {
-		width: 98%;
-		margin: 0 0 9px;
+	p.comment-form-author, p.comment-form-email {
+		float: left;
+		width: 50%;
+	}
+	input#author {
+		margin-right: 25px;
+	}
+	input#email {
+		margin-left: 25px;
+	}
+	input#author, input#email {
+		width: calc(100% - 25px);
 	}
 	textarea {
-		width: 98%;
+		width: 100%;
+		margin-top: 15px;
+	}
+	textarea, input {
+		height: 40px;
+		padding: 10px;
+		border: none;
+		border-bottom: 2px solid #D5D6D5;
+		outline: none;
+		font-family: $heading-font;
+		font-style: italic;
+		&:focus {
+			border-bottom: 2px solid $accent-2;
+		}
 	}
 	dt {
 		color: #888888;
@@ -181,10 +258,23 @@ h3#reply-title {
 		}
 	}
 	.form-submit {
-		margin: 0 0 24px;
-		input {
-			width: auto;
-			font-size: 14px;
+		margin-bottom: 100px;
+		text-align: center;
+		input#submit {
+			width: 180px;
+			margin-top: 50px;
+			padding: 6px 0;
+			background: transparent;
+			border: 3px solid $accent-2;
+			border-radius: 50px;
+			font-size: 12px;
+			text-transform: uppercase;
+			font-style: bold;
+			color: $accent-2;
+			&:hover {
+				background-color: $accent-2;
+				color: white;
+			}
 		}
 	}
 	dl {
@@ -212,14 +302,21 @@ p.form-allowed-tags, .nocomments {
 	}
 }
 
-.comment-meta a {
-	&:active, &:hover {
-		color: #ff4b33;
+.comment-meta {
+	background-color: white;
+	a {
+		&:active, &:hover {
+			color: $accent-2;
+		}
+	}
+	b.fn {
+		padding-right: 15px;
+		font-size: 24px;
 	}
 }
 
 .reply a:hover, a.comment-edit-link:hover {
-	color: #ff4b33;
+	color: $accent-2;
 }
 
 #respond p, #comments-list ul #respond {

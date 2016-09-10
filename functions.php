@@ -26,7 +26,9 @@ function theme_setup() {
 	* You can allow clients to create multiple menus by
   * adding additional menus to the array. */
 	register_nav_menus( array(
-		'primary' => 'Primary Navigation'
+		'primary' => 'Primary Navigation',
+		'social' => 'Social Navigation',
+		'secondary' => 'Secondary Navigation'
 	) );
 
 	/*
@@ -51,6 +53,15 @@ function hackeryou_styles(){
 	wp_enqueue_style('style', get_stylesheet_uri() );
 
 	wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+
+	wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600i|Josefin+Sans:600,700');
+	wp_enqueue_style('devicons', 'https://cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css');
+	wp_enqueue_style(
+		'flickity', 
+		'https://npmcdn.com/flickity@2.0/dist/flickity.css',
+		null,
+		null
+	);
 }
 
 add_action( 'wp_enqueue_scripts', 'hackeryou_styles');
@@ -79,9 +90,25 @@ function hackeryou_scripts() {
   );
 
   wp_enqueue_script(
+  	'flickity',
+  	'https://npmcdn.com/flickity@2.0/dist/flickity.pkgd.min.js',
+  	array('jquery'), // dependencies
+  	null, // version number
+  	true // load in footer
+  );
+
+  wp_enqueue_script(
+  	'svg',
+  	'https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.3.4/svg.min.js',
+  	array('jquery'), // dependencies
+  	null, // version number
+  	true // load in footer
+  );
+
+  wp_enqueue_script(
     'scripts', //handle
     get_template_directory_uri() . '/js/main.min.js', //source
-    array( 'jquery', 'plugins' ), //dependencies
+    array( 'jquery', 'plugins', 'flickity', 'svg' ), //dependencies
     null, // version number
     true //load in footer
   );
@@ -131,7 +158,7 @@ add_filter( 'wp_page_menu_args', 'hackeryou_page_menu_args' );
  * Sets the post excerpt length to 40 characters.
  */
 function hackeryou_excerpt_length( $length ) {
-	return 40;
+	return 30;
 }
 add_filter( 'excerpt_length', 'hackeryou_excerpt_length' );
 
@@ -139,7 +166,7 @@ add_filter( 'excerpt_length', 'hackeryou_excerpt_length' );
  * Returns a "Continue Reading" link for excerpts
  */
 function hackeryou_continue_reading_link() {
-	return ' <a href="'. get_permalink() . '">Continue reading <span class="meta-nav">&rarr;</span></a>';
+	return ' <a href="'. get_permalink() . '" class="read-more">Continue reading  &rarr;</a> ';
 }
 
 /**
@@ -179,6 +206,16 @@ function hackeryou_widgets_init() {
 		'before_title' => '<h3 class="widget-title">',
 		'after_title' => '</h3>',
 	) );
+
+	// register_sidebar(array(
+	// 	'name' => __('social-share', 'themeoptions');
+	// 	'description' => 'Description',
+	// 	'id'   => 'widget_name_id',
+	// 	'before_widget' => '<li>',
+	// 	'after_widget'  => '</li>',
+	// 	'before_title'  => '<h3>',
+	// 	'after_widget'  => '</h3>'
+	// ));
 
 }
 
@@ -281,3 +318,29 @@ function get_post_parent($post) {
 		return $post->ID;
 	}
 }
+
+/* Allows user to add avg in wordpress backend */
+function cc_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'cc_mime_types');
+
+/* allows resizing of post thumbnail */
+function hackeryou_featured_image_url($post) {
+	$image_id = get_post_thumbnail_id($post->ID);
+	$image_url = wp_get_attachment_url($image_id);
+
+	return $image_url;
+}
+
+/* reorder comment form */
+
+function wpb_move_comment_field_to_bottom( $fields ) {
+	$comment_field = $fields['comment'];
+	unset( $fields['comment'] );
+	$fields['comment'] = $comment_field;
+	return $fields;
+}
+
+add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );

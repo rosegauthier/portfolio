@@ -1,0 +1,81 @@
+.portfolio {
+	background-color: #f2f2f2;
+	h2 {
+		margin-top: 75px;
+		padding-top: 75px;
+	}
+}
+
+.portfolio-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-bottom: 75px;
+	.single-item {
+		width: 45%;
+		margin-top: 80px;
+		&:nth-of-type(1) {
+			margin-top: 0;
+		}
+		&:nth-of-type(2) {
+			margin-top: 0;
+		}
+		@media all and (max-width: 800px) {
+			width: 60%;
+			margin: 80px auto 0 auto;
+			&:nth-of-type(1) {
+				margin: 0 auto;
+			}
+			&:nth-of-type(2) {
+				margin-top: 80px;
+			}
+		}
+		@media all and (max-width: 450px) {
+			width: 80%;
+		}
+	}
+	a {
+		display: block;
+		text-align: center;
+		.fp-portfolio-image-container {
+			position: relative;
+			font-size: 0;
+			.fp-portfolio-overlay {
+				display: flex;
+				position: absolute;
+				top: 12.9%;
+				right: 5.1%;
+				bottom: 35.8%;
+				left: 4.7%;
+				padding: 10px;
+				background-color: rgba(0, 0, 0, 0.8);
+				text-align: center;
+				opacity: 0;
+				transition: opacity 0.3s;
+				p {
+					margin: auto;
+					font-size: 16px;
+				}
+			}
+			&:hover .fp-portfolio-overlay {
+				opacity: 1;
+				color: $accent-2;
+			}
+		}
+		h3 {
+			padding-top: 15px;
+			padding-bottom: 10px;
+			font-size: 16px;
+			text-transform: uppercase;
+		}
+		.skills-used {
+			padding-bottom: 30px;
+			font-size: 16px;
+			color: #ababab;
+		}
+	}
+	a.project-view {
+		padding-top: 25px;
+		margin-left: 0;
+	}
+}

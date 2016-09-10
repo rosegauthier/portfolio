@@ -1,3 +1,132 @@
 footer {
 	clear: both;
+	background-color: $accent-1;
+	.footer-bottom {
+		padding: 30px;
+		background-color: white;
+		text-align: center;
+		color: #ababab;
+		span {
+			color: $black;
+		}
+	}
+}
+
+.footer-info {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-bottom: 115px;
+	padding: 45px;
+	background-color: white;
+	@media all and (max-width: 800px) {
+		padding: 30px 30px 45px 30px;
+	}
+	h3 {
+		padding-bottom: 30px;
+		text-transform: uppercase;
+		font-size: 16px;
+		letter-spacing: 2px;
+		@media all and (max-width: 800px) {
+			font-size: 14px;
+		}
+	}
+	a:hover {
+		color: $accent-2;
+	}
+	.footer-left {
+		width: 30%;
+		a {
+			display: inline-block;
+			color: #ababab;
+			transition: color 0.3s;
+			&:hover {
+				color: $accent-2;
+			}
+			&:first-of-type {
+				margin-bottom: 35px;
+			}
+			i {
+				display: inline-block;
+				font-size: 55px;
+				padding-right: 10px;
+				vertical-align: middle;
+				@media all and (max-width: 800px) {
+					font-size: 40px;
+				}
+			}
+			p {
+				display: inline-block;
+				vertical-align: middle;
+				font-size: 20px;
+			}
+		}
+		@media all and (max-width: 800px) {
+			flex-basis: 50%;
+		}
+		@media all and (max-width: 450px) {
+			flex-basis: 100%;
+			text-align: center;
+		}
+	}
+	.footer-middle {
+		width: 40%;
+		text-align: center;
+		h2 {
+			padding-top: 15px;
+			font-size: 30px;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+		}
+		p {
+			padding-bottom: 15px;
+			font-style: italic;
+		}
+		li {
+			display: inline-block;
+			a {
+				padding: 15px 8px;
+				border-bottom: 1px solid transparent;
+				transition: color 0.3s, border-bottom 0.3s;
+				&:hover {
+					border-bottom: 1px solid $accent-2;
+				}
+			}
+		}
+		@media all and (max-width: 800px) {
+			order: -1;
+			flex-basis: 100%;
+			padding-bottom: 50px;	
+		}
+	}
+	.back-to-top {
+		position: absolute;
+		display: block;
+		left: calc(50% - 9px);
+		bottom: -25px;
+		height: 55px;
+		cursor: pointer;
+	}
+	.footer-right {
+		width: 30%;
+		text-align: right;
+		p {
+			color: #ababab;
+			@media all and (max-width: 800px) {
+				font-size: 16px;
+			}
+		}
+		p:nth-of-type(2) {
+			padding-bottom: 60px;
+		}
+		@media all and (max-width: 800px) {
+			width: 50%;
+		}
+		@media all and (max-width: 450px) {
+			flex-basis: 100%;
+			padding-top: 50px;
+			text-align: center;
+		}
+	}
 }

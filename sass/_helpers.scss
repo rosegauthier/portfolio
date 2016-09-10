@@ -1,0 +1,15 @@
+@mixin keyline ($left, $width, $color) {
+	position: absolute;
+	bottom: 0;
+	left: $left;
+	width: $width;
+	content: '';
+	border-bottom: 2px solid $color;
+}
+
+$heading-font: 'Josefin Sans', sans-serif;
+$primary-font: 'Crimson Text', serif;
+
+$black: #121212;
+$accent-1: #DDF1EC;
+$accent-2: #9ac9bd;

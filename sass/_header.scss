@@ -1,0 +1,179 @@
+.header-container {
+	position: relative;
+	padding-top: 80px;
+	padding-bottom: 60px;
+	@media all and (max-width: 800px) {
+		position: relative;
+		padding: 80px 30px 60px 30px;
+	}
+	.header-box	{
+		position: relative;
+		display: inline-block;
+		width: 270px;
+		height: 270px;
+		background-color: $accent-1;
+		vertical-align: middle;
+		@media all and (max-width: 800px) {
+			width: 230px;
+			height: 230px;
+		}
+	}
+	.headings {
+		display: inline-block;
+		position: absolute;
+		top: 200px;
+		left: 27%;
+		vertical-align: middle;
+		text-transform: uppercase;
+		@media all and (max-width: 800px) {
+			top: 155px;
+			text-align: center;
+		}
+		@media all and (max-width: 450px) {
+			left: 50px;
+			max-width: 330px;
+		}
+		h1 {
+			position: relative;
+			&::after {
+				position: absolute;
+				top: 25px;
+				left: -80px;
+				content: "";
+				width: 70px;
+				height: 4px;
+				border-bottom: 4px solid $black;
+				@media all and (max-width: 800px) {
+					top: 25px;
+					left: -80px;
+				}
+				@media all and (max-width: 450px) {
+					display: none;
+				}
+			}
+		}
+		h3 {
+			font-size: 14px;
+			@media all and (max-width: 800px) {
+				display: none;
+			}
+		}
+	}
+}
+
+.front-header {
+	position: relative;
+	height: 950px;
+	// min-height: 600px;
+	overflow: hidden;
+	background-color: $accent-1;
+	z-index: 0;
+	@media all and (max-width: 600px) {
+		height: 750px;
+	}
+	&::after {
+	  content: '';
+	  position: absolute;
+	  top: 0;
+	  left: 40%;
+	  width: 100%; 
+	  height: 200%;
+	  background-color: #f2f2f2;
+	  transform: rotate(25deg);
+	  z-index: -10;
+	}
+	h1 {
+		width: 540px;
+		margin-left: 200px;
+		padding-top: 90px;
+		@media all and (max-width: 800px) {
+			width: 400px;
+			margin: 0 auto;
+			text-align: center;
+		}
+		@media all and (max-width: 450px) {
+			width: 320px;
+			font-size: 30px;
+		}
+	}
+}
+
+h1 {
+	font-size: 48px;
+	color: #121212;
+	font-weight: 600;
+	line-height: 1.5;
+	text-transform: none;
+	letter-spacing: 1px;
+	@media all and (max-width: 800px) {
+		font-size: 40px;
+	}
+}
+
+.secondary-header h1 {
+	@media all and (max-width: 450px) {
+		font-size: 30px;
+	}
+}
+
+.gallery-item {
+	width: 100%;
+	margin-top: 60px;
+	text-align: center;
+}
+// .project-view {
+// 	display: inline-block;
+// 	padding-bottom: 10px;
+// 	font-size: 20px;
+// 	font-family: $heading-font;
+// 	text-align: center;
+// 	text-transform: uppercase;
+// }
+
+.flickity-prev-next-button {
+	background: transparent;
+}
+.macbook-image {
+	position: relative;
+	display: inline-block;
+	.macbook {
+		width: 770px;
+		max-width: 80%;
+	}
+	.portfolio-mockup {
+		position: absolute;
+		top: 6%;
+		left: 19.5%;
+		width: 60.5%;
+	}
+}
+
+.logo-container {
+	position: relative;
+	display: inline-block;
+	width: 70px;
+	margin-top: 20px;
+	img {
+		display: block
+	}
+	.logo-overlay {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		bottom: 5px;
+		left: 5px;
+		background: white;
+		color: transparent;
+	}
+}
+
+// #drawing {
+// 	display: inline-block;
+// 	width: 60px;
+// 	height: 60px;
+// 	text-align: center;
+// 	img {
+// 		background-color: blue;
+// 		display: inline-block;
+// 	}
+// }

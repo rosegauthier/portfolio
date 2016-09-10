@@ -1,0 +1,47 @@
+.social {
+	padding-bottom: 160px;
+	text-align: center;
+}
+
+.social-list {
+	display: flex;
+	justify-content: space-around;
+	li {
+		&:hover .icon-container {
+			background-color: $accent-1;
+			color: white;
+		}
+		&:hover h3 {
+			color: $accent-2;
+		}
+		.icon-container {
+			display: flex;
+			width: 80px;
+			height: 80px;
+			margin: 0 auto 30px auto;
+			border-radius: 50%;
+			background-color: #efefef;
+			transition: background-color 0.3s;
+			@media all and (max-width: 800px) {
+				width: 60px;
+				height: 60px;
+			}
+			i {
+				margin: auto;
+				font-size: 32px;
+				transition: color 0.3s;
+				@media all and (max-width: 800px) {
+					font-size: 24px;
+				}
+			}
+		}	
+		h3 {
+			font-size: 16px;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			@media all and (max-width: 800px) {
+				font-size: 10px;
+			}
+		}
+	}
+}

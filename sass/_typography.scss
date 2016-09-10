@@ -1,8 +1,9 @@
 a {
-	color: #BA209B;
+	color: $black;
 	text-decoration: none;
+	transition: color 0.3s;
 	&:hover {
-		color: #D424B1;
+		color: $accent-2;
 	}
 }
 
@@ -44,12 +45,6 @@ dt {
 dd {
 	padding: 10px;
 	margin-left: 10px;
-}
-
-/*lists*/
-
-ul li, ol li {
-	padding: 3px;
 }
 
 /*PRE*/

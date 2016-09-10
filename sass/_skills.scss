@@ -1,0 +1,37 @@
+.skills {
+	.skill-container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		.single-skill {
+			display: flex;
+			width: 16%;
+			height: 160px;
+			margin-bottom: 10px;
+			background-color: $accent-1;
+			text-align: center;
+			@media all and (max-width: 800px) {
+				width: 24%;
+			}
+			@media all and (max-width: 450px) {
+				width: 32%;
+				height: 110px;
+			}
+			.skill-info {
+				margin: auto;
+				span {
+					display: inline-block;
+					font-size: 60px;	
+					@media all and (max-width: 450px) {
+						font-size: 40px;
+					}
+				}
+				@media all and (max-width: 450px) {
+					p {
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+}
